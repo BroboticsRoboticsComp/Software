@@ -74,8 +74,10 @@ void loop() {
   
   // Disable our interrupt routine on and off each second
   NVIC_DISABLE_IRQ(IRQ_FTM0);
+  digitalWrite(LED_PIN, HIGH);
   delay(1000);
   NVIC_ENABLE_IRQ(IRQ_FTM0);
+  //digitalWrite(LED_PIN, LOW);
   delay(1000);
 }
  
