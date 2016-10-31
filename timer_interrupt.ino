@@ -19,14 +19,15 @@
  * My post on PJRC: https://forum.pjrc.com/threads/28572-Can-t-get-__disable_irq()-to-work-on-Teensy-LC
  */
  
-const int LED_PIN = 13;
-volatile int led = 0;
+//const int LED_PIN = 13;
+//volatile int led = 0;
+volatile byte dac = 0b00000000;
  
 void setup() {
   
   // Set up the LED and set it low initially
-  pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, led);
+  //pinMode(LED_PIN, OUTPUT);
+  //digitalWrite(LED_PIN, led);
   
   // The order of setting the TPMx_SC, TPMx_CNT, and TPMx_MOD
   // seems to matter. You must clear _SC, set _CNT to 0, set _MOD
@@ -71,7 +72,7 @@ void setup() {
 }
  
 void loop() {
-  
+  /*
   // Disable our interrupt routine on and off each second
   NVIC_DISABLE_IRQ(IRQ_FTM0);
   digitalWrite(LED_PIN, HIGH);
@@ -79,6 +80,7 @@ void loop() {
   NVIC_ENABLE_IRQ(IRQ_FTM0);
   //digitalWrite(LED_PIN, LOW);
   delay(1000);
+  */
 }
  
 // "ftm0_isr" is an interrupt vector defined for the Teensy
@@ -92,6 +94,11 @@ void ftm0_isr(void) {
   FTM0_SC |= (1 << 7);
   
   // Our interrupt routine: Toggle the LED
-  led = ~led;
-  digitalWrite(LED_PIN, led);
+  //led = ~led;
+  //digitalWrite(LED_PIN, led);
+  GPIOD_PDOR = dac;
+  
+
+  //PORTD = dac;
+    
 }
