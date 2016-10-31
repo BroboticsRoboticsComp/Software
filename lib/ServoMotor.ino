@@ -1,43 +1,40 @@
 #include <Servo.h>
 
-#define FAST_C 0
-#define NORMAL_C 45
-#define FAST_CC 180
-#define NORMAL_CC 135
+#include "servoMotor.h"
 
-Servo ServoL;
-Servo ServoR;
-
-int pos = 0;
+void setupServo() {
+  ServoL.attach(0);
+  ServoR.attach(1);
+}
 
 void goForward(){
   ServoL.write(NORMAL_CC);
   ServoR.write(NORMAL_C);
 }
 
-void stopMovement(){
-  ServoL.write(NORMAL_CC);
-  ServoR.write(NORMAL_C);
-  delay(200);
+void goReverse(){
   ServoL.write(NORMAL_C);
   ServoR.write(NORMAL_CC);
-  delay(200);
+}
+
+void stopMovement(){
+  if (ServoL.read() != STOP) ServoL.write(STOP);
+  if (ServoR.read() != STOP) ServoR.write(STOP);
 }
 
 void turnRight(){
-  ServoL.write(0);
+  ServoR.write(NORMAL_C);
+  ServoL.write(FAST_CC);
 }
 
 void turnLeft(){
-  ServoR.write(0);
+  ServoL.write(NORMAL_CC);
+  ServoR.write(FAST_C);
 }
 
-void setup() {
-  ServoL.attach(1);
-  ServoR.attach(0);
-  }
-
+/*
 void loop() {
    goForward();
   //stopMovement();
 }
+*/
