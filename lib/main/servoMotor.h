@@ -14,5 +14,6 @@ void goForward();
 void stopMovement();
 void turnRight();
 void turnLeft();
+void sonic();
 
 #endif // SERVOMOTOR_H_INCLUDED

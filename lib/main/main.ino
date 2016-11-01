@@ -18,7 +18,9 @@ void setup() {
 
   setupServo();
   speakerSetup();
-  pinMode(11,OUTPUT);
+  
+  pinMode(11,INPUT);
+  
   //-------------//
   FTM0_SC = 0;
   FTM0_CNT = 0;
@@ -41,15 +43,14 @@ int cnt = 0;
 
 void loop(){ 
   //GREYSCALE + PLAY MUSIC
-  //Serial.println(readGS());
+  Serial.println(readGS());
   generateByte(freqs[readGS()]);
-
+  
   //LINE FOLLOWING CODE//  
-  //stopMovement();
   
   if (trackLine() == CLOCKWISE) turnRight();
   if (trackLine() == COUNTERCLOCKWISE) turnLeft();
-  if (trackLine() == MIDDLE) goForward();
+  if (trackLine() == MIDDLE) digitalRead(11) ? sonic() : goForward();
   
 }
 void ftm0_isr(void) {

@@ -12,6 +12,7 @@
 #define MUTE 8
 
 #define sinArraySize  255
+
 #define x  (48000000/(8*(65535+1)))/255
 
 const double freqs[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25, 0};

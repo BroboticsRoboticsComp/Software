@@ -8,7 +8,7 @@ void op(int input){//not being used atm\
 }
 //((input>>i)&1)
 void generateByte(double freq){
-  int i = floor(count*255.0/int_freq*freq);
+  int i = floor(count*(double) (sinArraySize)/int_freq*freq);
   
   //Serial.print();
   
@@ -16,7 +16,7 @@ void generateByte(double freq){
   if(i>=sinArraySize-1){
     cli();
     count = 0;
-    i = floor(count*255.0/int_freq*freq);
+    i = floor(count*(double) (sinArraySize)/int_freq*freq);
     sei();
         
   } 

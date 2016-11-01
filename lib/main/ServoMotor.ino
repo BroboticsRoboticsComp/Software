@@ -32,6 +32,11 @@ void turnLeft(){
   ServoR.write(FAST_C);
 }
 
+void sonic(){
+  ServoL.write(FAST_CC);
+  ServoR.write(FAST_C);
+}
+
 /*
 void loop() {
    goForward();
