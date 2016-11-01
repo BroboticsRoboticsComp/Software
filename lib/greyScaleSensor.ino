@@ -2,19 +2,14 @@
 
 int readGS(void){
 
-  for(int i = 0; i<7; i++){
-    if(digitalRead(GREYSCALE_PIN) < note[i]){
+  for(int i = 7; i>=0; i--){
+    if(analogRead(GREYSCALE_PIN) < note[i]){
       return i;
     }
   }
-
+  return 8;
 }
 
-void greyScaleSetup(){
-  
-   pinMode(GREYSCALE_PIN, INPUT);
-  
-}
 /*
 void setup()
 {

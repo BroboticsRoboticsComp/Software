@@ -7,13 +7,22 @@ void op(int input){//not being used atm\
   }
 }
 //((input>>i)&1)
-void generateByte(int freq){
+void generateByte(double freq){
   int i = floor(count*255.0/int_freq*freq);
-  dac = sinArray[i];
-  op(sinArray[i]);
+  
+  //Serial.print();
+  
+  
   if(i>=sinArraySize-1){
-    count = 0;    
-  }  
+    cli();
+    count = 0;
+    i = floor(count*255.0/int_freq*freq);
+    sei();
+        
+  } 
+  //Serial.println(sinArray[i]);
+  dac = sinArray[i];
+  //op(sinArray[i]); 
 }
 
 void speakerSetup(){

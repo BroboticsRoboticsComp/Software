@@ -10,8 +10,9 @@
 #define SHADE_G 4
 #define SHADE_A 5
 #define SHADE_B 6
+#define SHADE_C5 7
 
-const int note[] = {1, 2, 3, 4, 5, 6, 7};
+const int note[] = {1000, 660, 500, 350, 270, 200, 130, 90};
 
 int readGS(void);
 
